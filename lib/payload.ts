@@ -79,7 +79,7 @@ export async function getArticles(
 
     const res = await fetch(url, {
       headers: getHeaders(),
-      next: { revalidate: 3600 }, // ISR: 每小时重新验证
+      next: { revalidate: 60 }, // ISR: 每小时重新验证
     })
 
     if (!res.ok) {
@@ -109,7 +109,7 @@ export async function getArticle(slug: string): Promise<Article | null> {
 
     const res = await fetch(url, {
       headers: getHeaders(),
-      next: { revalidate: 3600 },
+      next: { revalidate: 60 },
     })
 
     if (!res.ok) {
@@ -156,7 +156,7 @@ export async function getTags(): Promise<Tag[]> {
 
     const res = await fetch(url, {
       headers: getHeaders(),
-      next: { revalidate: 3600 },
+      next: { revalidate: 60 },
     })
 
     if (!res.ok) {
@@ -191,7 +191,7 @@ export async function getArticlesByTag(
     const tagUrl = `${PAYLOAD_URL}/api/tags?where[slug][equals]=${tagSlug}&where[site.slug][equals]=${SITE_SLUG}&limit=1`
     const tagRes = await fetch(tagUrl, {
       headers: getHeaders(),
-      next: { revalidate: 3600 },
+      next: { revalidate: 60 },
     })
 
     let tag: Tag | null = null
@@ -211,7 +211,7 @@ export async function getArticlesByTag(
 
     const res = await fetch(url, {
       headers: getHeaders(),
-      next: { revalidate: 3600 },
+      next: { revalidate: 60 },
     })
 
     if (!res.ok) {
