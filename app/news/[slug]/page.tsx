@@ -84,13 +84,6 @@ export default async function ArticlePage({
       {/* Article Content */}
       <section className="py-20 bg-ink-50">
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
-          {article.coverImage && (
-            <img
-              src={article.coverImage}
-              alt={article.title}
-              className="w-full aspect-[16/9] object-cover magazine-photo mb-12"
-            />
-          )}
           {/* Payload 返回的 content 为 HTML 字符串，直接渲染（内容来自受信任的 CMS/AI 生成） */}
           <div
             className="prose-content"
