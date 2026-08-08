@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { getArticle, getArticles, getAllArticleSlugs } from "@/lib/payload";
+import ArticleCharts from "@/app/ArticleCharts";
 
 export const revalidate = 3600;
 
@@ -95,6 +96,7 @@ export default async function ArticlePage({
             className="prose-content"
             dangerouslySetInnerHTML={{ __html: article.content }}
           />
+          <ArticleCharts />
 
           {/* CTA */}
           <div className="mt-12 p-8 bg-white border-l-4 border-crimson-500">
