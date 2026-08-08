@@ -1,5 +1,5 @@
 import type { MetadataRoute } from "next";
-import { getArticles, getTags } from "@/lib/strapi";
+import { getArticles, getTags } from "@/lib/payload";
 import { studs, puppies } from "@/lib/data";
 
 const BASE_URL = "https://xsc888.cn";

@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { studs, puppies } from "@/lib/data";
-import { getArticles } from "@/lib/strapi";
+import { getArticles } from "@/lib/payload";
 
 const HERO_IMAGE =
   "https://images.unsplash.com/photo-1532375810709-75b1da00537c?w=1920&q=80";

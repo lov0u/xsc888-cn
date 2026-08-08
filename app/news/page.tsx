@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { getArticles } from "@/lib/strapi";
+import { getArticles } from "@/lib/payload";
 
 export const metadata: Metadata = {
   title: "新闻资讯 - 清风犬舍",
