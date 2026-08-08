@@ -33,35 +33,33 @@ export default async function NewsPage() {
       <section className="py-24 bg-ink-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           {articles.length > 0 ? (
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {articles.map((article, index) => (
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {articles.map((article) => (
                 <Link
                   key={article.id}
                   href={`/news/${article.slug}/`}
-                  className={`group block card-magazine bg-white border border-ink-200 ${
-                    index === 0 ? "md:col-span-2 lg:col-span-2" : ""
-                  }`}
+                  className="group block card-magazine bg-white border border-ink-200"
                 >
-                  {article.coverImage && (
-                    <div className="overflow-hidden">
+                  {article.coverImage ? (
+                    <div className="aspect-[21/9] overflow-hidden bg-ink-100">
                       <img
                         src={article.coverImage}
                         alt={article.title}
-                        className={`w-full ${
-                          index === 0 ? "aspect-[16/9]" : "aspect-[16/10]"
-                        } object-cover magazine-photo group-hover:scale-105 transition-transform duration-700`}
+                        className="w-full h-full object-cover magazine-photo group-hover:scale-105 transition-transform duration-300"
                       />
                     </div>
+                  ) : (
+                    <div className="aspect-[21/9] bg-ink-100 flex items-center justify-center">
+                      <svg className="w-12 h-12 text-ink-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z" />
+                      </svg>
+                    </div>
                   )}
-                  <div className="p-6">
+                  <div className="p-5">
                     <p className="text-xs text-ink-500 mb-2">
                       {new Date(article.publishedAt).toLocaleDateString("zh-CN")}
                     </p>
-                    <h3
-                      className={`font-bold text-ink-900 mb-3 group-hover:text-crimson-500 transition-colors ${
-                        index === 0 ? "text-2xl" : "text-lg"
-                      }`}
-                    >
+                    <h3 className="text-lg font-bold text-ink-900 mb-3 group-hover:text-crimson-500 transition-colors line-clamp-2">
                       {article.title}
                     </h3>
                     <p className="text-sm text-ink-500 line-clamp-3">
