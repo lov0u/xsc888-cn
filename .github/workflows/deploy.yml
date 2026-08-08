@@ -8,7 +8,7 @@ on:
 env:
   ACR_REGISTRY: crpi-e6ejb7mi9ku0ep4b.cn-shanghai.personal.cr.aliyuncs.com
   ACR_NAMESPACE: lov0u
-  IMAGE_NAME: xsc888
+  IMAGE_NAME: xsc888-cn
   SITE_SLUG: xsc888
   PORT: 3007
 
@@ -26,8 +26,8 @@ jobs:
         context: .
         push: true
         tags: |
-          crpi-e6ejb7mi9ku0ep4b.cn-shanghai.personal.cr.aliyuncs.com/lov0u/xsc888:latest
-          crpi-e6ejb7mi9ku0ep4b.cn-shanghai.personal.cr.aliyuncs.com/lov0u/xsc888:${{github.sha}}
+          crpi-e6ejb7mi9ku0ep4b.cn-shanghai.personal.cr.aliyuncs.com/lov0u/xsc888-cn:latest
+          crpi-e6ejb7mi9ku0ep4b.cn-shanghai.personal.cr.aliyuncs.com/lov0u/xsc888-cn:${{github.sha}}
 
     - name: Deploy to server
       uses: appleboy/ssh-action@v1
@@ -36,21 +36,21 @@ jobs:
         username: ${{ secrets.SERVER_USER }}
         password: ${{ secrets.SERVER_PASSWORD }}
         script: |
-          echo "=== Deploy xsc888 ==="
+          echo "=== Deploy xsc888-cn ==="
           echo "Login ACR..."
           docker login crpi-e6ejb7mi9ku0ep4b.cn-shanghai.personal.cr.aliyuncs.com -u ${{ secrets.ACR_USERNAME }} -p ${{ secrets.ACR_PASSWORD }}
           echo "Pull image..."
-          docker pull crpi-e6ejb7mi9ku0ep4b.cn-shanghai.personal.cr.aliyuncs.com/lov0u/xsc888:latest
+          docker pull crpi-e6ejb7mi9ku0ep4b.cn-shanghai.personal.cr.aliyuncs.com/lov0u/xsc888-cn:latest
           echo "Stop old container..."
-          docker stop xsc888 || true
-          docker rm xsc888 || true
+          docker stop xsc888-cn || true
+          docker rm xsc888-cn || true
           echo "Start new container..."
           docker run -d \
-            --name xsc888 \
+            --name xsc888-cn \
             --restart always \
             -p 3007:3000 \
             -e NODE_ENV=production \
-            crpi-e6ejb7mi9ku0ep4b.cn-shanghai.personal.cr.aliyuncs.com/lov0u/xsc888:latest
+            crpi-e6ejb7mi9ku0ep4b.cn-shanghai.personal.cr.aliyuncs.com/lov0u/xsc888-cn:latest
           echo "Prune old images..."
           docker image prune -f
           echo "Done!"
