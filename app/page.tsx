@@ -2,6 +2,8 @@ import Link from "next/link";
 import { studs, puppies } from "@/lib/data";
 import { getArticles } from "@/lib/payload";
 
+export const revalidate = 60; // ISR: 每分钟重新验证，避免旧 HTML 缓存引用已清理的旧 chunk
+
 const HERO_IMAGE =
   "https://images.unsplash.com/photo-1532375810709-75b1da00537c?w=1920&q=80";
 const ABOUT_IMAGE =
