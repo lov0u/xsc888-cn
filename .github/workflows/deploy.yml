@@ -55,7 +55,7 @@ jobs:
           docker run -d \
             --name xsc888 \
             --restart always \
-            -p 3007:3000 \
+            -p 127.0.0.1:3007:3000 \
             -e NODE_ENV=production \
             crpi-e6ejb7mi9ku0ep4b.cn-shanghai.personal.cr.aliyuncs.com/lov0u/xsc888-cn:latest
           echo "Prune old images..."
